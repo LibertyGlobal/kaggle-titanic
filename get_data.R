@@ -16,3 +16,11 @@ test$Survived <- rep(0, 418)
 submit <- data.frame(PassengerId = test$PassengerId, Survived = test$Survived)
 write.csv(submit, file = "theyallperish.csv", row.names = FALSE)
 
+summary(train$Sex)
+prop.table(table(train$Sex, train$Survived),1)
+
+test$Survived <- 0
+test$Survived[test$Sex == 'female'] <- 1
+
+submit <- data.frame(PassengerId = test$PassengerId, Survived = test$Survived)
+write.csv(submit, file = "theyallperish.csv", row.names = FALSE)
