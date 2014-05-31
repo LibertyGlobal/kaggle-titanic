@@ -7,4 +7,12 @@ head(gendermodel)
 head(genderclassmodel)
 head(test)
 
-hist(train$Age,breaks=50,col="red")
+hist(train$Age,breaks=100,col="red")
+prop.table(table(train$Survived))
+
+test$Survived <- rep(0, 418)
+
+
+submit <- data.frame(PassengerId = test$PassengerId, Survived = test$Survived)
+write.csv(submit, file = "theyallperish.csv", row.names = FALSE)
+
